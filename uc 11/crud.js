@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 
-databasename = {};
+var databasename = '';
 function createdatabasename(name) {
     databasename = name;
 }
@@ -20,7 +20,7 @@ const db_connection = mysql.createConnection({
 // create database
 function createDatabase() {
     const databaseQuery = `CREATE DATABASE IF NOT EXISTS ${databasename} `;
-         connection.query(databaseQuery, function (err, result) {
+    db_connection.query(databaseQuery, function (err, result) {
         if (err) throw err;
         console.log(`"Database Created" ,${databasename}` );
     });
@@ -33,7 +33,7 @@ function dropDatabase() {
     });
 }
 
-tablename = {};
+var tablename = {};
 function createtablename(name) {
     tablename = name;
 }
@@ -42,7 +42,7 @@ const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: 'kali@123',
-    database: databasename,
+    database: "ani",
     waitForConnecction: true,
     connectionLimit: 10,
     queueLimit: 0
@@ -110,9 +110,8 @@ function delate(id) {
 
 module.exports = {
     db_connection,
-    tablename,
-    createDatabasename,
-    tablename,
+    createtablename,
+    createdatabasename,
     createDatabase,
     dropDatabase,
     createtable,
