@@ -125,9 +125,9 @@ function get() {
 }
 
 // update user
-function update(tablename,id, name, email, password) {
-    const updateQuery = `UPDATE ${tablename}SET name =?, email =?, password =? WHERE id =?`;
-    connection.query(updateQuery, [id, name, email, password, ], function(err, results) {
+function update(tablename, name, email, password,id) {
+    const updateQuery = `UPDATE ${tablename} SET name =?, email =?, password =? WHERE id =?`;
+    connection.query(updateQuery, [ name, email, password,id ], function(err, results) {
         if (err) {
             logger.error('Error updating record:', err);
             throw err;
@@ -168,8 +168,8 @@ return {
     droptable: () => removetable(),
     insert: (name, email, password) => insert(name, email, password),
     get: () => get(),
-    update: (id, name, email, password) => update( id, name, email, password),
-    delate: (id) => delate(id),
+    update: (tablename, name, email, password,id) => update(tablename, name, email, password,id),
+    delate: (tablename, id) => delate(tablename, id),
 }
 
 };
