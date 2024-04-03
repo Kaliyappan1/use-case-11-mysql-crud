@@ -40,14 +40,16 @@ function createDatabase() {
 
 
 // drop database
-function dropDatabase() {
-    db_connection.query(`DROP DATABASE IF EXISTS ${databasename}`, function(err, results) {
-        if (err) {
-            logger.error('Error dropping database:', err);
-            throw err;
-        }
-        console.log("Database Dropped");
-    });
+function dropDatabase(databaseNames) {
+    
+        db_connection.query(`DROP DATABASE IF EXISTS ${databaseNames}`, function(err, results) {
+            if (err) {
+                logger.error('Error dropping database:', err);
+                throw err;
+            }
+            console.log("Database Dropped");
+        });
+    
 }
 
 const connection = mysql.createConnection({
@@ -125,7 +127,7 @@ function get() {
 // update user
 function update(tablename,id, name, email, password) {
     const updateQuery = `UPDATE ${tablename}SET name =?, email =?, password =? WHERE id =?`;
-    connection.query(updateQuery, [name, email, password, id], function(err, results) {
+    connection.query(updateQuery, [id, name, email, password, ], function(err, results) {
         if (err) {
             logger.error('Error updating record:', err);
             throw err;
@@ -136,7 +138,7 @@ function update(tablename,id, name, email, password) {
 }
 
 // delate
-function delate(id) {
+function delate(tablename, id) {
     const deleteQuery = `DELETE FROM ${tablename} WHERE id =?`;
     connection.query(deleteQuery, [id], function(err, results) {
         if (err) {
@@ -161,26 +163,15 @@ connection.end(function(err) {
 
 return {
     createdb: () => createDatabase(),
-    dropdb: () => dropDatabase(),
+    dropdb: (databaseNames) => dropDatabase(databaseNames),
     createtable: () => createtable(),
     droptable: () => removetable(),
     insert: (name, email, password) => insert(name, email, password),
     get: () => get(),
-    update: (id, name, email, password) => update( id, name, email, passwrord),
+    update: (id, name, email, password) => update( id, name, email, password),
     delate: (id) => delate(id),
 }
 
-
-// module.exports = {
-//     createDatabase,
-//     dropDatabase,
-//     createtable,
-//     removetable,
-//     insert,
-//     get,
-//     update,
-//     delate
-// };
 };
 
 
