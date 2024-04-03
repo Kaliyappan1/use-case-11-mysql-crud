@@ -1,11 +1,11 @@
 const mysql = require('mysql');
 
-var databasename = '';
-function createdatabasename(name) {
-    databasename = name;
-}
 
-const db_connection = mysql.createConnection({
+
+
+function crud(databasename, tablename) {
+    
+    const db_connection = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: 'kali@123',
@@ -14,10 +14,7 @@ const db_connection = mysql.createConnection({
     connectionLimit: 10,
     queueLimit: 0
 });
-
-
-
-// create database
+    // create database
 function createDatabase() {
     const databaseQuery = `CREATE DATABASE IF NOT EXISTS ${databasename} `;
     db_connection.query(databaseQuery, function (err, result) {
@@ -25,24 +22,21 @@ function createDatabase() {
         console.log(`"Database Created" ,${databasename}` );
     });
 }
+
+
 // drop database
 function dropDatabase() {
-    db_connection.query(`DROP DATABASE IF EXISTS ${databaseName}`, function(err, results) {
+    db_connection.query(`DROP DATABASE IF EXISTS ${databasename}`, function(err, results) {
         if (err) throw err;
         console.log("Database Dropped");
     });
-}
-
-var tablename = {};
-function createtablename(name) {
-    tablename = name;
 }
 
 const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: 'kali@123',
-    database: "ani",
+    database: databasename,
     waitForConnecction: true,
     connectionLimit: 10,
     queueLimit: 0
@@ -51,7 +45,8 @@ const connection = mysql.createConnection({
 
 // create table
 function createtable() {
-    const createtableQuery = `CREATE TABLE IF NOT EXISTS ${tablename} (
+    const createtableQuery = `
+    CREATE TABLE IF NOT EXISTS ${tablename} (
         id INT NOT NULL AUTO_INCREMENT,
         name VARCHAR(255) NOT NULL,
         email VARCHAR(255) NOT NULL,
@@ -66,18 +61,19 @@ function createtable() {
 
 // remove table
 function removetable() {
-    connection(`DROP TABLE IF EXISTS ${tablename}`, function(err,results) {
+    connection.query(`DROP TABLE IF EXISTS ${tablename}`, function(err,results) {
         if (err) throw err;
         console.log('Table removed successfully');
     });
 }
 
 // insert 
-function insert(name, email,password) {
-    const insertQuery = `INSERT IGNORE INTO ${tablename}(name, email, password) VALUES (?, ?, ?)`;
-    connection.query(insertQuery, [name,email,password], function(err, results) {
+function insert(name, email, password) {
+    const insertQuery = `INSERT INTO ${tablename}(name, email, password) VALUES (?, ?, ?)`;
+    connection.query(insertQuery, [name, email, password], function(err, results) {
         if (err) throw err;
         console.log('Record inserted successfully');
+        return results;
     });
 }
 
@@ -91,7 +87,7 @@ function get() {
 }
 
 // update user
-function update(id, name, email, password) {
+function update(tablename,id, name, email, password) {
     const updateQuery = `UPDATE ${tablename}SET name =?, email =?, password =? WHERE id =?`;
     connection.query(updateQuery, [name, email, password, id], function(err, results) {
         if (err) throw err;
@@ -105,19 +101,45 @@ function delate(id) {
     connection.query(deleteQuery, [id], function(err, results) {
         if (err) throw err;
         console.log('Record deleted successfully');
+    
+    // Disconnect from MySQL
+connection.end(function(err) {
+    if (err) {
+      console.error('Error disconnecting from MySQL: ');
+      return;
+    }
+    console.log('Disconnected from MySQL');
+  });
+
     });
 }
 
-module.exports = {
-    db_connection,
-    createtablename,
-    createdatabasename,
-    createDatabase,
-    dropDatabase,
-    createtable,
-    removetable,
-    insert,
-    get,
-    update,
-    delate
+
+return {
+    createdb: () => createDatabase(),
+    dropdb: () => dropDatabase(),
+    createtable: () => createtable(),
+    droptable: () => removetable(),
+    insert: () => insert(),
+    get: () => get(),
+    update: () => update(),
+    delate: () => delate(),
+}
+
+
+// module.exports = {
+//     createDatabase,
+//     dropDatabase,
+//     createtable,
+//     removetable,
+//     insert,
+//     get,
+//     update,
+//     delate
+// };
 };
+
+
+module.exports = crud;
+
+

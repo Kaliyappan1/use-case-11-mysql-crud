@@ -2,13 +2,20 @@ require('mysql');
 const mysqlFunctions = require('./crud');
 
 
-mysqlFunctions.createdatabasename("ani")
-mysqlFunctions.createDatabase()
-// mysqlFunctions.dropDatabase()
-mysqlFunctions.createtablename("notes")
-mysqlFunctions.createtable()
-// mysqlFunctions.removetable()
-// mysqlFunctions.insert("kaliyappan","yappank17@gmail.com", "12345456")
-mysqlFunctions.get()
-// mysqlFunctions.update()
-// mysqlFunctions.delate()
+
+
+const instance = mysqlFunctions("registration","users"); 
+
+
+// instance.createdb();
+// instance.dropdb();
+// instance.createtable();
+// instance.droptable();
+instance.insert('kali' ,'kali@123','ani123');
+// instance.delate(1);
+instance.get();
+// instance.update();
+
+
+
+
