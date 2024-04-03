@@ -1,0 +1,77 @@
+{
+  code: 'ER_BAD_NULL_ERROR',
+  errno: 1048,
+  sqlMessage: "Column 'name' cannot be null",
+  sqlState: '23000',
+  index: 0,
+  sql: 'INSERT INTO users(name, email, password) VALUES (NULL, NULL, NULL)',
+  level: 'error',
+  message: "Error inserting record: ER_BAD_NULL_ERROR: Column 'name' cannot be null",
+  stack: "Error: ER_BAD_NULL_ERROR: Column 'name' cannot be null\n" +
+    '    at Sequence._packetToError (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\sequences\\Sequence.js:47:14)\n' +
+    '    at Query.ErrorPacket (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\sequences\\Query.js:79:18)\n' +
+    '    at Protocol._parsePacket (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:291:23)\n' +
+    '    at Parser._parsePacket (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Parser.js:433:10)\n' +
+    '    at Parser.write (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Parser.js:43:10)\n' +
+    '    at Protocol.write (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:38:16)\n' +
+    '    at Socket.<anonymous> (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\Connection.js:88:28)\n' +
+    '    at Socket.<anonymous> (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\Connection.js:526:10)\n' +
+    '    at Socket.emit (node:events:519:28)\n' +
+    '    at addChunk (node:internal/streams/readable:559:12)\n' +
+    '    --------------------\n' +
+    '    at Protocol._enqueue (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:144:48)\n' +
+    '    at Connection.query (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\Connection.js:198:25)\n' +
+    '    at insert (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\crud.js:96:16)\n' +
+    '    at Object.insert (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\crud.js:159:19)\n' +
+    '    at Object.<anonymous> (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\index.js:14:10)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1378:14)\n' +
+    '    at Module._extensions..js (node:internal/modules/cjs/loader:1437:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1212:32)\n' +
+    '    at Module._load (node:internal/modules/cjs/loader:1028:12)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:142:12)',
+  timestamp: '2024-04-03T12:22:47.704Z'
+}
+{
+  code: 'PROTOCOL_ENQUEUE_AFTER_QUIT',
+  fatal: false,
+  level: 'error',
+  message: 'disconnect from MySQL: Cannot enqueue Quit after invoking quit.',
+  stack: 'Error: Cannot enqueue Quit after invoking quit.\n' +
+    '    at Protocol._validateEnqueue (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:215:16)\n' +
+    '    at Protocol._enqueue (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:138:13)\n' +
+    '    at Protocol.quit (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:91:23)\n' +
+    '    at Connection.end (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\Connection.js:239:18)\n' +
+    '    at Query.<anonymous> (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\crud.js:101:12)\n' +
+    '    at Query.<anonymous> (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\Connection.js:526:10)\n' +
+    '    at Query._callback (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\Connection.js:488:16)\n' +
+    '    at Sequence.end (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\sequences\\Sequence.js:83:24)\n' +
+    '    at Query._handleFinalResultPacket (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\sequences\\Query.js:149:8)\n' +
+    '    at Query.OkPacket (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\sequences\\Query.js:74:10)',
+  timestamp: '2024-04-03T12:26:40.527Z'
+}
+{
+  code: 'PROTOCOL_SEQUENCE_TIMEOUT',
+  fatal: true,
+  timeout: 30000,
+  level: 'error',
+  message: 'disconnect from MySQL: Quit inactivity timeout',
+  stack: 'Error: Quit inactivity timeout\n' +
+    '    at Quit.<anonymous> (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:160:17)\n' +
+    '    at Quit.emit (node:events:519:28)\n' +
+    '    at Quit._onTimeout (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\sequences\\Sequence.js:124:8)\n' +
+    '    at Timer._onTimeout (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Timer.js:32:23)\n' +
+    '    at listOnTimeout (node:internal/timers:573:17)\n' +
+    '    at process.processTimers (node:internal/timers:514:7)\n' +
+    '    --------------------\n' +
+    '    at Protocol._enqueue (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:144:48)\n' +
+    '    at Protocol.quit (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:91:23)\n' +
+    '    at Connection.end (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\Connection.js:239:18)\n' +
+    '    at Query.<anonymous> (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\crud.js:39:12)\n' +
+    '    at Query.<anonymous> (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\Connection.js:526:10)\n' +
+    '    at Query._callback (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\Connection.js:488:16)\n' +
+    '    at Sequence.end (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\sequences\\Sequence.js:83:24)\n' +
+    '    at Query._handleFinalResultPacket (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\sequences\\Query.js:149:8)\n' +
+    '    at Query.OkPacket (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\sequences\\Query.js:74:10)\n' +
+    '    at Protocol._parsePacket (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:291:23)',
+  timestamp: '2024-04-03T12:27:10.540Z'
+}

@@ -1,13 +1,14 @@
 const mysql = require('mysql');
 const winston = require('winston');
+const {combine, timestamp, json, prettyPrint} = winston.format
 
 const logger = winston.createLogger({
-    level: 'error',
-    format: combine (timestamp(),json(),prettyprint()),
+    level: 'info',
+    format: combine (timestamp(),json(),prettyPrint()),
     transports: [
         new winston.transports.Console(),
         new winston.transports.File({ filename: 'error.log', level: 'error' }),
-        new winston.transports.File({ filename: 'store.log' })
+        new winston.transports.File({ filename: 'info.log' })
     ]
 })
 
@@ -28,8 +29,12 @@ function crud(databasename, tablename) {
 function createDatabase() {
     const databaseQuery = `CREATE DATABASE IF NOT EXISTS ${databasename} `;
     db_connection.query(databaseQuery, function (err, result) {
-        if (err) throw err;
+        if (err){
+            logger.error('Error creating database:', err)
+            throw err;
+        }
         console.log(`"Database Created" ,${databasename}` );
+        
     });
 }
 
@@ -37,7 +42,10 @@ function createDatabase() {
 // drop database
 function dropDatabase() {
     db_connection.query(`DROP DATABASE IF EXISTS ${databasename}`, function(err, results) {
-        if (err) throw err;
+        if (err) {
+            logger.error('Error dropping database:', err);
+            throw err;
+        }
         console.log("Database Dropped");
     });
 }
@@ -64,16 +72,25 @@ function createtable() {
         PRIMARY KEY (id)
     )`
     connection.query(createtableQuery, function(err, results) {
-            if (err) throw err;
+            if (err) {
+                logger.error('Error creating table:', err);
+                throw err;
+            }
             console.log('Table Created successfully');
+            
+  
     });
 }
 
 // remove table
 function removetable() {
     connection.query(`DROP TABLE IF EXISTS ${tablename}`, function(err,results) {
-        if (err) throw err;
+        if (err) {
+            logger.error('Error dropping table:', err);
+            throw err;
+        }
         console.log('Table removed successfully');
+
     });
 }
 
@@ -81,9 +98,13 @@ function removetable() {
 function insert(name, email, password) {
     const insertQuery = `INSERT INTO ${tablename}(name, email, password) VALUES (?, ?, ?)`;
     connection.query(insertQuery, [name, email, password], function(err, results) {
-        if (err) throw err;
+        if (err) {
+            logger.error('Error inserting record:', err);
+            throw err;
+        }
         console.log('Record inserted successfully');
         return results;
+
     });
 }
 
@@ -91,8 +112,13 @@ function insert(name, email, password) {
 function get() {
     const getQuery = `SELECT * FROM ${tablename}`;
     connection.query(getQuery, function(err, results) {
-        if (err) throw err;
+        if (err) {
+            logger.error('Error getting records:', err);
+            throw err;
+        }
         console.log('Users:', results);
+        
+
     });
 }
 
@@ -100,8 +126,12 @@ function get() {
 function update(tablename,id, name, email, password) {
     const updateQuery = `UPDATE ${tablename}SET name =?, email =?, password =? WHERE id =?`;
     connection.query(updateQuery, [name, email, password, id], function(err, results) {
-        if (err) throw err;
+        if (err) {
+            logger.error('Error updating record:', err);
+            throw err;
+        }
         console.log('Record updated successfully');
+
     });
 }
 
@@ -109,12 +139,16 @@ function update(tablename,id, name, email, password) {
 function delate(id) {
     const deleteQuery = `DELETE FROM ${tablename} WHERE id =?`;
     connection.query(deleteQuery, [id], function(err, results) {
-        if (err) throw err;
+        if (err) {
+            logger.error('Error deleting record:', err);
+            throw err;
+        }
         console.log('Record deleted successfully');
     
     // Disconnect from MySQL
 connection.end(function(err) {
     if (err) {
+        logger.error ('disconnect from MySQL:',err);
       console.error('Error disconnecting from MySQL: ');
       return;
     }

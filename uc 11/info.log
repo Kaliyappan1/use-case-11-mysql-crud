@@ -1,0 +1,44 @@
+{
+  code: 'PROTOCOL_ENQUEUE_AFTER_QUIT',
+  fatal: false,
+  level: 'error',
+  message: 'disconnect from MySQL: Cannot enqueue Quit after invoking quit.',
+  stack: 'Error: Cannot enqueue Quit after invoking quit.\n' +
+    '    at Protocol._validateEnqueue (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:215:16)\n' +
+    '    at Protocol._enqueue (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:138:13)\n' +
+    '    at Protocol.quit (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:91:23)\n' +
+    '    at Connection.end (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\Connection.js:239:18)\n' +
+    '    at Query.<anonymous> (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\crud.js:101:12)\n' +
+    '    at Query.<anonymous> (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\Connection.js:526:10)\n' +
+    '    at Query._callback (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\Connection.js:488:16)\n' +
+    '    at Sequence.end (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\sequences\\Sequence.js:83:24)\n' +
+    '    at Query._handleFinalResultPacket (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\sequences\\Query.js:149:8)\n' +
+    '    at Query.OkPacket (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\sequences\\Query.js:74:10)',
+  timestamp: '2024-04-03T12:26:40.527Z'
+}
+{
+  code: 'PROTOCOL_SEQUENCE_TIMEOUT',
+  fatal: true,
+  timeout: 30000,
+  level: 'error',
+  message: 'disconnect from MySQL: Quit inactivity timeout',
+  stack: 'Error: Quit inactivity timeout\n' +
+    '    at Quit.<anonymous> (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:160:17)\n' +
+    '    at Quit.emit (node:events:519:28)\n' +
+    '    at Quit._onTimeout (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\sequences\\Sequence.js:124:8)\n' +
+    '    at Timer._onTimeout (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Timer.js:32:23)\n' +
+    '    at listOnTimeout (node:internal/timers:573:17)\n' +
+    '    at process.processTimers (node:internal/timers:514:7)\n' +
+    '    --------------------\n' +
+    '    at Protocol._enqueue (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:144:48)\n' +
+    '    at Protocol.quit (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:91:23)\n' +
+    '    at Connection.end (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\Connection.js:239:18)\n' +
+    '    at Query.<anonymous> (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\crud.js:39:12)\n' +
+    '    at Query.<anonymous> (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\Connection.js:526:10)\n' +
+    '    at Query._callback (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\Connection.js:488:16)\n' +
+    '    at Sequence.end (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\sequences\\Sequence.js:83:24)\n' +
+    '    at Query._handleFinalResultPacket (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\sequences\\Query.js:149:8)\n' +
+    '    at Query.OkPacket (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\sequences\\Query.js:74:10)\n' +
+    '    at Protocol._parsePacket (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:291:23)',
+  timestamp: '2024-04-03T12:27:10.540Z'
+}
