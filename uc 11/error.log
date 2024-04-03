@@ -75,3 +75,35 @@
     '    at Protocol._parsePacket (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:291:23)',
   timestamp: '2024-04-03T12:27:10.540Z'
 }
+{
+  code: 'ER_BAD_DB_ERROR',
+  errno: 1049,
+  sqlMessage: "Unknown database 'makenew'",
+  sqlState: '42000',
+  fatal: true,
+  level: 'error',
+  message: "Error creating table: ER_BAD_DB_ERROR: Unknown database 'makenew'",
+  stack: "Error: ER_BAD_DB_ERROR: Unknown database 'makenew'\n" +
+    '    at Sequence._packetToError (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\sequences\\Sequence.js:47:14)\n' +
+    '    at Handshake.ErrorPacket (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\sequences\\Handshake.js:123:18)\n' +
+    '    at Protocol._parsePacket (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:291:23)\n' +
+    '    at Parser._parsePacket (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Parser.js:433:10)\n' +
+    '    at Parser.write (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Parser.js:43:10)\n' +
+    '    at Protocol.write (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:38:16)\n' +
+    '    at Socket.<anonymous> (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\Connection.js:88:28)\n' +
+    '    at Socket.<anonymous> (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\Connection.js:526:10)\n' +
+    '    at Socket.emit (node:events:519:28)\n' +
+    '    at addChunk (node:internal/streams/readable:559:12)\n' +
+    '    --------------------\n' +
+    '    at Protocol._enqueue (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:144:48)\n' +
+    '    at Protocol.handshake (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\protocol\\Protocol.js:51:23)\n' +
+    '    at Connection.connect (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\Connection.js:116:18)\n' +
+    '    at Connection._implyConnect (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\Connection.js:454:10)\n' +
+    '    at Connection.query (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\node_modules\\mysql\\lib\\Connection.js:196:8)\n' +
+    '    at createtable (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\crud.js:74:16)\n' +
+    '    at Object.createtable (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\crud.js:165:24)\n' +
+    '    at Object.<anonymous> (C:\\Users\\kaliy\\Desktop\\projects\\uc 11\\index.js:12:10)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1378:14)\n' +
+    '    at Module._extensions..js (node:internal/modules/cjs/loader:1437:10)',
+  timestamp: '2024-04-03T12:35:54.228Z'
+}

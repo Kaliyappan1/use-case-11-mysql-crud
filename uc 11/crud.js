@@ -164,10 +164,10 @@ return {
     dropdb: () => dropDatabase(),
     createtable: () => createtable(),
     droptable: () => removetable(),
-    insert: () => insert(),
+    insert: (name, email, password) => insert(name, email, password),
     get: () => get(),
-    update: () => update(),
-    delate: () => delate(),
+    update: (id, name, email, password) => update( id, name, email, passwrord),
+    delate: (id) => delate(id),
 }
 
 
