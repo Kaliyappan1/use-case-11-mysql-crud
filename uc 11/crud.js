@@ -1,5 +1,15 @@
 const mysql = require('mysql');
+const winston = require('winston');
 
+const logger = winston.createLogger({
+    level: 'error',
+    format: combine (timestamp(),json(),prettyprint()),
+    transports: [
+        new winston.transports.Console(),
+        new winston.transports.File({ filename: 'error.log', level: 'error' }),
+        new winston.transports.File({ filename: 'store.log' })
+    ]
+})
 
 
 
